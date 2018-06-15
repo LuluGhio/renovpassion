@@ -1,0 +1,119 @@
+body{
+    background: 50% url(img/wall.jpg) no-repeat;
+    background-attachment: fixed;
+
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+/* ########## NAV ########## */
+.fa{
+    font-size: 50px;
+    margin-left: 1rem;
+}
+
+/* ######### TOP ######### */
+#top{
+    width: 100%;
+    height: 400px;
+    background: 50% url(img/4.jpg) no-repeat;
+    background-attachment: fixed;
+}
+
+/* ######### MAIN ######### */
+h2{
+    margin: 2rem 0;
+    font-weight: bold;
+}
+
+
+/* ######### Services / 4 cards ######### */
+#services{
+    width: 100%;
+    height: 50rem;
+    background: 50% url(img/3.jpg) no-repeat;
+    background-attachment: fixed;
+}
+
+#services span i{
+    color: #006064;
+}
+
+#services .far, #services .fas{
+    font-size: 70px;
+    margin-bottom: 1rem;
+}
+
+#services .card-panel:first-of-type{
+    margin-top: 5rem;
+    width: 100%;
+}
+
+#services .card-panel{
+    margin: 0 auto;
+    min-height: 240px;
+    max-height: 240px;
+}
+
+#services .card-panel p{
+    margin: auto auto;
+}
+
+/* ######### Travaux finis ######### */
+#travaux .card-title{
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: #006064;
+}
+
+hr{
+    color: #006064;
+    border: 1px solid #006064;
+}
+ .card-image{
+     margin: 1rem;
+ }
+ 
+ .card-image img{
+     height: 230px;
+ }
+
+/* ######### Contact ######### */
+#contact{
+    width: 100%;
+    height: 30rem;
+    background: 50% url(img/2.jpg) no-repeat;
+    background-attachment: fixed;
+}
+
+form{
+    margin-top: 7rem;
+}
+
+.input-field{
+    margin: 0 2rem;
+}
+
+.textarea{
+    width: 100%;
+}
+
+.input-field label{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+button{
+    margin: 2rem 0 0 50rem;
+}
+
+/* ######### FOOTER ######### */
+.fab, .fas{
+    font-size: 20px;
+}
+footer a, .footer-copyright{
+    /*margin: 1rem;*/
+    text-align: center;
+}
+

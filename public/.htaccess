@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# http://htdocs-lulug.c9users.io/renovPassion/public/
+RewriteBase /renovPassion/public/
+
+# SI L'URL DEMANDEE EST index.php ALORS UTILISER index.php
+RewriteRule ^index\.php$ - [L]
+
+# SI L'URL DEMANDEE NE CORRESPOND PAS A UN FICHIER
+RewriteCond %{REQUEST_FILENAME} !-f
+# SI L'URL DEMANDEE NE CORRESPOND PAS A UN DOSSIER
+RewriteCond %{REQUEST_FILENAME} !-d
+# ALORS APACHE VA UTILISER LE FICHIER index.php
+RewriteRule . ./index.php [L]
+</IfModule>
