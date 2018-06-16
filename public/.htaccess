@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 # http://htdocs-lulug.c9users.io/renovPassion/public/
-RewriteBase /renovPassion/public/
+RewriteBase /renovPassion/symfony/public/
 
 # SI L'URL DEMANDEE EST index.php ALORS UTILISER index.php
 RewriteRule ^index\.php$ - [L]
