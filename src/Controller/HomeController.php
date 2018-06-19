@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Contact;
 // use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -28,7 +29,6 @@ class HomeController extends Controller
     /**
      * @Route("/", name="home")
      */ 
-    
     public function home(){
         return $this->render('home/home.html.twig'); // render allows to call for the twig file
     }
@@ -37,7 +37,7 @@ class HomeController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function newContact(Request $request, EntityManagerInterface $entityManager){
+    public function newContact(Request $request, EntityManagerInterface $entityManager): Response{
         
         $entityManager = $this->getDoctrine()->getManager();
         
@@ -59,20 +59,17 @@ class HomeController extends Controller
         //FORM TREATMENT
         $form->handleRequest($request); // analysing the request: submitted or not
         
-        is($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid()){
             //saving the query
-            $entityManager->persist($contact)
+            $entityManager->persist($contact);
             // executes the query
             $entityManager->flush();
-            return new Response('Saved new product with id '.$contact->getId());
-            // echo "Merci pour votre message, nous vous répondrons dans les meilleurs délais";
+            return $this->render('home/merci.html.twig');
         }
-        
         
         return $this->render('home/contact.html.twig',[
             'formContact' => $form->createView()    
-            // createView() is a method from the FORM CLASS to make the displaing
+            // createView() is a method from the FORM CLASS to make the displaying
             ]);
-        
     }
 }
