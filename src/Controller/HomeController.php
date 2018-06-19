@@ -42,21 +42,17 @@ class HomeController extends Controller
         $form = $this->createFormBuilder($contact) // here $contact is the entity
         // now let's configurate the form ! 
                     ->add('prenom', textType::class, [
-                        'attr' => ['placeholder' => 'Votre prénom',
-                        'class' => "form-control"],
-                        ])
+                        'attr' => ['placeholder' => 'Votre prénom'
+                        ]])
                     ->add('nom', textType::class, [
-                        'attr' => ['placeholder' => 'Votre nom',
-                        'class' => "form-control"],
-                        ])
+                        'attr' => ['placeholder' => 'Votre nom'
+                        ]])
                     ->add('email', EmailType::class, [
-                        'attr' => ['placeholder' => 'Votre email',
-                        'class' => "form-control"],
-                        ])
+                        'attr' => ['placeholder' => 'Votre email'
+                        ]])
                     ->add('message', textType::class, [
-                        'attr' => ['placeholder' => 'Quel est votre projet ?',
-                                    'class' => "form-control"],
-                        ])
+                        'attr' => ['placeholder' => 'Quel est votre projet ?'
+                        ]])
                     ->getForm();
         // now I want to display the form via twig
         
