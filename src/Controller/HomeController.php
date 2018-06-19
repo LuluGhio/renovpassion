@@ -5,8 +5,9 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Contact;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class HomeController extends Controller
 {
@@ -33,19 +34,26 @@ class HomeController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function newContact(Request $request, ObjectManager $manager){
+    public function newContact(Request $request, EntityManagerInterface $EntityManagerInterface){
         
-        $contact = new Contact();
-        // createFormBuilder() creates a form linked to $contact
-        $form = $this->createFormBuilder($contact)
+        $contact = new Contact(); // $contact is an empty contact object, ready to be completed
+        // createFormBuilder() creates a form binded to $contact
+        $form = $this->createFormBuilder($contact) // here $contact is the entity
         // now let's configurate the form ! 
                     ->add('prenom')
                     ->add('nom')
-                    ->add('email')
-                    ->add('message')
+                    ->add('email', EmailType::class)
+                    ->add('message', NULL, [
+                        'attr' => ['placeholder' => 'Quel est votre projet ?']
+                        ])
                     ->getForm();
+        // now I want to display the form via twig
         
-        return $this->render('home/contact.html.twig');
+        
+        return $this->render('home/contact.html.twig',[
+            'formContact' => $form->createView()    
+            // createView() is a method from the FORM CLASS to make the displaing
+            ]);
         
     }
 }
