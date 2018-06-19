@@ -8,7 +8,10 @@
     
     {{ form_start(formContact) }}
 
-        {{ form_widget(formContact) }}
+        {{ form_row(formContact.prenom,{'attr': {'placeholder': 'Votre prénom'}}) }}
+        {{ form_row(formContact.nom,{'attr': {'placeholder': 'Votre nom'}}) }}
+        {{ form_row(formContact.email,{'attr': {'placeholder': 'Votre email'}}) }}
+        {{ form_row(formContact.message,{'attr': {'placeholder': 'Quel est votre projet?'}}) }}
 
     {{ form_end(formContact) }}
     

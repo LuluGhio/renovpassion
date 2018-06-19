@@ -81,10 +81,10 @@ hr{
 /* ######### Contact ######### */
 form{
     width: 100%;
-    height: 25rem;
     background: rgb(0, 172, 193);
     background-attachment: fixed;
     margin: 4rem 0;
+    padding: 2rem;
 }
 
 textarea, input{

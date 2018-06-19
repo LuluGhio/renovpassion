@@ -7,8 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Contact;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+// use Symfony\Component\Form\Extension\Core\Type\EmailType;
+// use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class HomeController extends Controller
 {
@@ -35,26 +37,36 @@ class HomeController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function newContact(Request $request, EntityManagerInterface $EntityManagerInterface){
+    public function newContact(Request $request, EntityManagerInterface $entityManager){
+        
+        $entityManager = $this->getDoctrine()->getManager();
         
         $contact = new Contact(); // $contact is an empty contact object, ready to be completed
         // createFormBuilder() creates a form binded to $contact
         $form = $this->createFormBuilder($contact) // here $contact is the entity
-        // now let's configurate the form ! 
-                    ->add('prenom', textType::class, [
-                        'attr' => ['placeholder' => 'Votre prénom'
-                        ]])
-                    ->add('nom', textType::class, [
-                        'attr' => ['placeholder' => 'Votre nom'
-                        ]])
-                    ->add('email', EmailType::class, [
-                        'attr' => ['placeholder' => 'Votre email'
-                        ]])
-                    ->add('message', textType::class, [
-                        'attr' => ['placeholder' => 'Quel est votre projet ?'
-                        ]])
+        // BUILDING THE FORM
+                    ->add('prenom')
+                    ->add('nom')
+                    ->add('email')
+                    ->add('message')
+                    ->add('enregistrer', SubmitType::class, [
+                        'label' => "Envoyer"
+                        ]
+                    )
                     ->getForm();
         // now I want to display the form via twig
+        
+        //FORM TREATMENT
+        $form->handleRequest($request); // analysing the request: submitted or not
+        
+        is($form->isSubmitted() && $form->isValid()){
+            //saving the query
+            $entityManager->persist($contact)
+            // executes the query
+            $entityManager->flush();
+            return new Response('Saved new product with id '.$contact->getId());
+            // echo "Merci pour votre message, nous vous répondrons dans les meilleurs délais";
+        }
         
         
         return $this->render('home/contact.html.twig',[
