@@ -4,6 +4,11 @@
 
     <h2>Nouveau contact</h2>
     
-    {{ form(formContact) }}
+    {{ form_start(formContact) }}
+
+        {{ form_widget(formContact) }}
+
+    {{ form_end(formContact) }}
+    
 
 {% endblock %}

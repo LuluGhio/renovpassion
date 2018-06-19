@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Contact;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HomeController extends Controller
 {
@@ -40,11 +41,21 @@ class HomeController extends Controller
         // createFormBuilder() creates a form binded to $contact
         $form = $this->createFormBuilder($contact) // here $contact is the entity
         // now let's configurate the form ! 
-                    ->add('prenom')
-                    ->add('nom')
-                    ->add('email', EmailType::class)
-                    ->add('message', NULL, [
-                        'attr' => ['placeholder' => 'Quel est votre projet ?']
+                    ->add('prenom', textType::class, [
+                        'attr' => ['placeholder' => 'Votre prénom',
+                        'class' => "form-control"],
+                        ])
+                    ->add('nom', textType::class, [
+                        'attr' => ['placeholder' => 'Votre nom',
+                        'class' => "form-control"],
+                        ])
+                    ->add('email', EmailType::class, [
+                        'attr' => ['placeholder' => 'Votre email',
+                        'class' => "form-control"],
+                        ])
+                    ->add('message', textType::class, [
+                        'attr' => ['placeholder' => 'Quel est votre projet ?',
+                                    'class' => "form-control"],
                         ])
                     ->getForm();
         // now I want to display the form via twig
