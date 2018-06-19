@@ -1,0 +1,1 @@
+[19-Jun-2018 19:07:47 UTC] PHP Fatal error:  Class 'Symfony\Bundle\FrameworkBundle\Controller\Controller' not found in /home/ubuntu/workspace/renovPassion/symfony/src/Controller/HomeController.php on line 8
