@@ -12,6 +12,7 @@ use Symfony\Component\Routing\RouteCollectionBuilder;
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
+    use App\EasyCorp\Bundle\EasyAdminBundle;
 
     const CONFIG_EXTS = '.{php,xml,yaml,yml}';
 
@@ -33,6 +34,11 @@ class Kernel extends BaseKernel
                 yield new $class();
             }
         }
+        
+        $bundles = array(
+            // ...
+            new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
+        );
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)

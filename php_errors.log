@@ -1,1 +1,3 @@
 [19-Jun-2018 19:28:46 UTC] PHP Fatal error:  Cannot use App\Controller\App\Controller\Request as Request because the name is already in use in /home/ubuntu/workspace/renovPassion/symfony/src/Controller/HomeController.php on line 8
+[20-Jun-2018 22:28:58 UTC] PHP Fatal error:  Trait 'App\App\EasyCorp\Bundle\EasyAdminBundle' not found in /home/ubuntu/workspace/renovPassion/symfony/src/Kernel.php on line 15
+[20-Jun-2018 22:29:24 UTC] PHP Fatal error:  Trait 'App\App\App\EasyCorp\Bundle' not found in /home/ubuntu/workspace/renovPassion/symfony/src/Kernel.php on line 15
