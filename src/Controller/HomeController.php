@@ -10,8 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Contact;
 // use Symfony\Component\Form\Extension\Core\Type\EmailType;
 // use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use App\Form\ContactType;
 
 class HomeController extends Controller
 {
@@ -43,18 +42,17 @@ class HomeController extends Controller
         
         $contact = new Contact(); // $contact is an empty contact object, ready to be completed
         // createFormBuilder() creates a form binded to $contact
-        $form = $this->createFormBuilder($contact) // here $contact is the entity
+        $form = $this->createForm(ContactType::class, $contact); // here $contact is the entity
         // BUILDING THE FORM
-                    ->add('prenom')
-                    ->add('nom')
-                    ->add('email')
-                    ->add('message')
-                    ->add('enregistrer', SubmitType::class, [
-                        'label' => "Envoyer"
-                        ]
-                    )
-                    ->getForm();
-        // now I want to display the form via twig
+                    // ->add('prenom')
+                    // ->add('nom')
+                    // ->add('email')
+                    // ->add('message')
+                    // ->add('enregistrer', SubmitType::class, [
+                    //     'label' => "Envoyer"
+                    //     ]
+                    // )
+                    // ->getForm();
         
         //FORM TREATMENT
         $form->handleRequest($request); // analysing the request: submitted or not
@@ -66,7 +64,8 @@ class HomeController extends Controller
             $entityManager->flush();
             return $this->render('home/merci.html.twig');
         }
-        
+
+        // now I want to display the form via twig
         return $this->render('home/contact.html.twig',[
             'formContact' => $form->createView()    
             // createView() is a method from the FORM CLASS to make the displaying
