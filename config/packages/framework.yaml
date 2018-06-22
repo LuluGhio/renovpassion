@@ -27,6 +27,21 @@ framework:
 
         # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
         #app: cache.adapter.apcu
+        
+    validation: { enable_annotations: true }
+        
 easy_admin:
+    design:
+        brand_color: '#00838F'
     entities:
-        - App\Entity\Contact
+        Contact:
+            class: App\Entity\Contact
+            list:
+                fields:
+                    - { property: 'id' }
+                    - { property: 'checked', type: 'toggle' }
+                    - { property: 'prenom' }
+                    - { property: 'nom' }
+                    - { property: 'email' }
+                    - { property: 'Message' }
+        

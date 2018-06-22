@@ -81,7 +81,7 @@ hr{
 /* ######### Contact ######### */
 form{
     width: 100%;
-    background: rgb(0, 172, 193);
+    background: rgba(0, 172, 193, 0.7);
     background-attachment: fixed;
     margin: 4rem 0;
     padding: 2rem;

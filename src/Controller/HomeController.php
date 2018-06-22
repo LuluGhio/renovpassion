@@ -43,17 +43,7 @@ class HomeController extends Controller
         $contact = new Contact(); // $contact is an empty contact object, ready to be completed
         // createFormBuilder() creates a form binded to $contact
         $form = $this->createForm(ContactType::class, $contact); // here $contact is the entity
-        // BUILDING THE FORM
-                    // ->add('prenom')
-                    // ->add('nom')
-                    // ->add('email')
-                    // ->add('message')
-                    // ->add('enregistrer', SubmitType::class, [
-                    //     'label' => "Envoyer"
-                    //     ]
-                    // )
-                    // ->getForm();
-        
+
         //FORM TREATMENT
         $form->handleRequest($request); // analysing the request: submitted or not
         

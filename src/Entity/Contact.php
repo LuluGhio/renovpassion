@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
@@ -15,6 +16,11 @@ class Contact
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $checked = false;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,6 +45,18 @@ class Contact
     public function getId()
     {
         return $this->id;
+    }
+    
+     public function getChecked(): ?bool
+    {
+        return $this->checked;
+    }
+
+    public function setChecked(bool $checked): self
+    {
+        $this->checked = $checked;
+
+        return $this;
     }
 
     public function getPrenom(): ?string
