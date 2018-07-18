@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    {% block travaux %}
+    
+        <h3>Tous nos travaux réalisés</h3>
+        
+        {% for articles in Blog %}
+        
+            <section class="articles">
+        
+                <div id="contenant-card"> <!-- contenant card -->
+                    <div class="card col s12 m4">
+                        <div class="card-image">
+                            <img src="{{ blog.img}}">
+                            <span class="card-title">{{ blog.title}}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>{{ blog.content}}</p>
+                            <hr />
+                            <p>Durée des travaux: {{ blog.duration}}</p>
+                            <p>Coût total: {{ blog.price}}€</p>
+                        </div>
+                    </div>
+                </div>
+            
+            </section>
+
+        {% endfor %}
+    
+    {% endblock %}
+
+
+{% endblock %}

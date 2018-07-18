@@ -22,7 +22,6 @@ class ContactType extends AbstractType
                 'label' => "Envoyer"
                 ]
             )
-            
         ;
     }
 

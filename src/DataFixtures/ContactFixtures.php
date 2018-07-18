@@ -6,7 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Contact;
 
-/*Ici on créé de fausses données à balancer dans notre table pour qu'elle soit fournie */
+/*Here we create false datas to load in our table for it to be provided */
 
 class ContactFixtures extends Fixture
 {
@@ -19,10 +19,10 @@ class ContactFixtures extends Fixture
                     ->setEmail("email$i@mail.me")
                     ->setMessage("Contenu du message $i");
                     
-            $manager->persist($contact); // je prépare le fait que le $contact existera dans la table
+            $manager->persist($contact); // I prepare $contact will exist in the table
             
         }
         
-        $manager->flush(); // je valide et balance le $contact dans la table - Symfony fera la requête sql nécessaire
+        $manager->flush(); // I validate and send $contact in the table - Symfony will make the sql query
     }
 }

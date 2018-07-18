@@ -51,7 +51,8 @@ class ContactController extends Controller
      */
     public function show(Contact $contact): Response
     {
-        return $this->render('contact/show.html.twig', ['contact' => $contact]);
+        return $this->render('contact/show.html.twig', [
+            'contact' => $contact]);
     }
 
     /**
